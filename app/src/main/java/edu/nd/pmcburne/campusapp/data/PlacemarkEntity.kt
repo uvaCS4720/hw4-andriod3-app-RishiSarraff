@@ -6,7 +6,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class PlacemarkResponseObject(
+data class PlacemarkResponse(
     val id: Int,
     val name: String,
     @SerialName("tag_list") val tagList: List<String>,
@@ -30,7 +30,7 @@ data class PlacemarkEntity(
     val tags: String
 )
 
-fun PlacemarkResponseObject.toEntity() = PlacemarkEntity(
+fun PlacemarkResponse.toEntity() = PlacemarkEntity(
     id = id,
     name = name,
     description = description,
