@@ -2,16 +2,16 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.kotlin.serialization)  
+    id("com.google.devtools.ksp") version "2.0.21-1.0.28" apply false
 }
 
 android {
-    namespace = "edu.nd.pmcburne.hello"
-    compileSdk {
-        version = release(36)
-    }
+    namespace = "edu.nd.pmcburne.campusapp"
+    compileSdk = 35 
 
     defaultConfig {
-        applicationId = "edu.nd.pmcburne.hello"
+        applicationId = "edu.nd.pmcburne.campusapp"
         minSdk = 26
         targetSdk = 36
         versionCode = 1
@@ -57,4 +57,23 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
+
+    // Viewmodel Dependency:
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.7")
+
+    // Room Dependency:
+    implementation("androidx.room:room-runtime:2.6.1")
+    implementation("androidx.room:room-ktx:2.6.1")
+    ksp("androidx.room:room-compiler:2.6.1")
+
+    // Retrofit + Serialization
+
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:1.0.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
+
+    // Google Maps Compose
+    implementation("com.google.maps.android:maps-compose:4.3.3")
+    implementation("com.google.android.gms:play-services-maps:19.0.0")
 }
