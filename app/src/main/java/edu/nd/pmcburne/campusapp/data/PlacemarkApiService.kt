@@ -12,7 +12,7 @@ private val json = Json { ignoreUnknownKeys = true }
 
 interface PlacemarkApiService {
     @GET("placemarks.json")
-    suspend fun getPlacemarks(): List<PlacemarkResponse>
+    suspend fun getPlacemarks(): List<PlacemarkResponseObject>
 }
 
 object PlacemarkApi {

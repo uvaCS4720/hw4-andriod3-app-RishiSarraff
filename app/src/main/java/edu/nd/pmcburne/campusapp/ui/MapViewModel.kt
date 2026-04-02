@@ -36,13 +36,10 @@ class MapViewModel(application: Application): AndroidViewModel(application){
         }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
 
     init {
-        android.util.Log.d("MapViewModel", "ViewModel created, starting sync")
         viewModelScope.launch {
             try {
-                android.util.Log.d("MapViewModel", "Calling syncFromApi")
                 repository.syncFromApi()
-                android.util.Log.d("MapViewModel", "Sync complete")
-            } catch (t: Throwable) {  // ← change Exception to Throwable
+            } catch (t: Throwable) {
                 android.util.Log.e("MapViewModel", "Sync failed: ${t.message}", t)
             }
         }
